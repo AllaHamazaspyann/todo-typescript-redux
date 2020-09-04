@@ -50,7 +50,7 @@ const TodoItem: React.FC<TodoListItemProps> = ({ singleTodo }) => {
       }
       return todo;
     });
-    dispatch(updateTodos(singleTodo, newTodos))
+    dispatch(updateTodos(newTodos))
   }
 
   const deleteSingleTodo = () => {
@@ -72,7 +72,7 @@ const TodoItem: React.FC<TodoListItemProps> = ({ singleTodo }) => {
           <Box color="primary.main" display="inline-block">Remaining Time</Box>
         </Typography>
         <Box>{diffinDays} days</Box>
-      <Grid item xs={8} style={Styles.deleteIcon} alignItems="center">
+      <Grid item xs={8} style={Styles.deleteIcon}>
         <Button variant="outlined" color="secondary" onClick={deleteSingleTodo}>
           Delete Todo
         </Button>
@@ -81,4 +81,4 @@ const TodoItem: React.FC<TodoListItemProps> = ({ singleTodo }) => {
   )
 }
 
-export default TodoItem;
+export default TodoItem

@@ -36,6 +36,9 @@ import { statusUpdate } from '../../helpers';
             InputLabelProps={{ shrink: true, }} 
             label="Enter todo text" 
             onChange={handleChange}
+            inputProps={
+              {'data-testid':'todo-input'}
+            }
             value={newTodo}
             />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
