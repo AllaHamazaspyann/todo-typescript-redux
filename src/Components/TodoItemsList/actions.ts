@@ -3,7 +3,7 @@ import { SingleTodo } from './../mainTypes';
 export const getListFromStorage = () => {
     return ({
         type: 'GET_TODO_LIST_FROM_STORAGE',
-        value: localStorage.getItem('todoList') && JSON.parse(localStorage.getItem('todoList') || '[]'),
+        value: localStorage.getItem('todoList') && JSON.parse(localStorage.getItem('todoList') || '[]') || [],
     })
 }
 
@@ -14,11 +14,10 @@ export const updateSectionStatus = (todoList: SingleTodo[], singleTodo: SingleTo
         }
         return todo
       });
-      console.log('todosUpdated', todosUpdated);
     return ({
         type: 'UPDATE_SECTION_STATUS',
         value: sectionStatus,    
         singleTodo,
-        todosUpdated: todosUpdated
+        todosUpdated
     })
 }

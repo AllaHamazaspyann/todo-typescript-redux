@@ -1,8 +1,8 @@
-import { SingleTodo } from '../mainTypes';
+import { SingleTodo } from './../mainTypes';
 
-export const updateTodos = (todosUpdated: SingleTodo) => {
+export const updateTodos = (singleTodo: SingleTodo,todosUpdated: SingleTodo[]) => {
     return({
-        type: 'UPDATE_EXISTING_TODOS',
+        type: 'UPDATE_TODOS',
         value: todosUpdated,
     })
 }

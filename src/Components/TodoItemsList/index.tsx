@@ -3,17 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { RootState } from 'typesafe-actions';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { getListFromStorage } from './actions';
+import { getListFromStorage, updateSectionStatus } from './actions';
 import * as styles from '../styles.css';
-
 import TodoItem from '../TodoItem';
-
+import { SingleTodo, SectionStatus } from '../mainTypes';
 import { statusUpdate } from '../../helpers';
 
-import { SingleTodo, SectionStatus } from '../mainTypes';
-
-import { updateSectionStatus } from './actions';
 
 const TodoItemsList: React.FC = () => {
   const todoListState = useSelector((state: RootState) => state.AddTodoState);
@@ -23,19 +18,11 @@ const TodoItemsList: React.FC = () => {
 
   useEffect(() => {
     dispatch(getListFromStorage());
-    // const interval = setInterval(() => statusUpdate(singleTodo.date), 1000);
-    // return () => clearInterval(interval);
-    
-  }, []);
-
-  useEffect(() => {
     todoList.map((singleTodo: SingleTodo) => {
-      console.log('dasas');
       const interval = setInterval(() => dispatch(updateSectionStatus(todoList, singleTodo, statusUpdate(singleTodo.date))), 1000);
       return () => clearInterval(interval);
     })
-  }, [])
-  
+  }, []);
 
   const getToDos = (section: string) => {
     return todoList.filter((todo: SingleTodo) => todo.section === section)

@@ -15,7 +15,6 @@ import {
   ToggleTodos,
   SectionStatus
 } from '../mainTypes';
-import { statusUpdate } from '../../helpers';
 
 interface TodoListItemProps {
   singleTodo: SingleTodo;
@@ -51,7 +50,7 @@ const TodoItem: React.FC<TodoListItemProps> = ({ singleTodo }) => {
       }
       return todo;
     });
-    dispatch(updateTodos(newTodos))
+    dispatch(updateTodos(singleTodo, newTodos))
   }
 
   const deleteSingleTodo = () => {
@@ -81,6 +80,5 @@ const TodoItem: React.FC<TodoListItemProps> = ({ singleTodo }) => {
     </li>
   )
 }
-
 
 export default TodoItem;

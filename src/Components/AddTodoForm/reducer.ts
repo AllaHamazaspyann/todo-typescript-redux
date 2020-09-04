@@ -32,16 +32,20 @@ export const AddTodoState = (state: AddTodoStateType = initialState, action: Act
         todoList: [...state.todoList, action.value]
       }
     }
-    case 'UPDATE_EXISTING_TODOS': {
+    case 'UPDATE_TODOS': {
+      localStorage.clear();
+      localStorage.setItem('todoList', JSON.stringify(action.value))
       return {
         ...state,
         todoList: action.value
       }
     }
     case 'DELETE_TODO_ITEM': {
+      const updatedList = state.todoList.filter((todo: SingleTodo) => todo !== action.value);
+      localStorage.setItem('todoList', JSON.stringify(updatedList))
       return {
         ...state,
-        todoList: state.todoList.filter((todo: SingleTodo) => todo !== action.value),
+        todoList: updatedList,
       }
     }
     case 'UPDATE_SECTION_STATUS': {

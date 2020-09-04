@@ -4,13 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
-
 import DateFnsUtils from '@date-io/date-fns';
-
 import { useDispatch } from 'react-redux';
-
 import { addTodo } from './actions';
-
 import { statusUpdate } from '../../helpers';
 
  const AddTodoForm: React.FC = () => {
@@ -29,8 +25,7 @@ import { statusUpdate } from '../../helpers';
   const addTodoItem = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
     newTodo.trim() !== "" && dispatch(addTodo({text: newTodo, date: selectedDate, complete: false, section: statusUpdate(selectedDate)}));
-    //TODO
-    // setNewTodo("")
+    setNewTodo("")
   } 
   
   return (
@@ -41,6 +36,7 @@ import { statusUpdate } from '../../helpers';
             InputLabelProps={{ shrink: true, }} 
             label="Enter todo text" 
             onChange={handleChange}
+            value={newTodo}
             />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
